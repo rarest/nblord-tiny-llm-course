@@ -1,0 +1,429 @@
+{
+  "schema_version": 1,
+  "source": {
+    "file": "tinyshakespeare-input.txt",
+    "url": "https://raw.githubusercontent.com/karpathy/char-rnn/6f9487a6fe5b420b7ca9afb0d7c078e37c1d1b4e/data/tinyshakespeare/input.txt",
+    "commit": "6f9487a6fe5b420b7ca9afb0d7c078e37c1d1b4e",
+    "sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+    "bytes": 1115394
+  },
+  "selection": "Split source on two newlines; take first 64 unique complete records with >=24 characters in source order. No stripping or rewriting.",
+  "storage": "Selected records joined with two newlines, plus exactly one extra final newline. Separators/final newline are not training text.",
+  "split": "First 48 selected records train, remaining 16 validation; split before windowing. No padding, no windows across records.",
+  "corpus_sha256": "859c47382109fd2394e5bf5ac544117e5de57830b8920f7b5ff0160b0edd9b71",
+  "corpus_bytes": 10797,
+  "records": [
+    {
+      "source_record_index": 0,
+      "split": "train",
+      "characters": 60,
+      "sha256": "3b802127c1e69c7198e77f6fc48bdaed77cda6c68f54264ee46aa926b8903684"
+    },
+    {
+      "source_record_index": 2,
+      "split": "train",
+      "characters": 65,
+      "sha256": "75f5c048ac7f96a4360d09158329fb155b77c405ec07dc1646d8c4950facd3f3"
+    },
+    {
+      "source_record_index": 3,
+      "split": "train",
+      "characters": 24,
+      "sha256": "34432a6884109cf3356a241bf4994c0da243fc28f6c0ae926c7042d773c9f991"
+    },
+    {
+      "source_record_index": 4,
+      "split": "train",
+      "characters": 74,
+      "sha256": "578764ef672e1ca3b534fd5bb9c63dfed5cd3fa81ed0e088b47e3521012ac643"
+    },
+    {
+      "source_record_index": 5,
+      "split": "train",
+      "characters": 26,
+      "sha256": "98cc644c55d70facd165c973fb77c3557c9ee32abf9f98b4827778fb7ad10578"
+    },
+    {
+      "source_record_index": 6,
+      "split": "train",
+      "characters": 85,
+      "sha256": "871639483a1b804fdb7c85c3b939facf5ba9fb516ba66ccd7213f28e13f4c2ba"
+    },
+    {
+      "source_record_index": 7,
+      "split": "train",
+      "characters": 54,
+      "sha256": "bbf781984f0ce895a158b00f5d4a63b739a1b90a07a387e56ecb48008d9a9dd3"
+    },
+    {
+      "source_record_index": 8,
+      "split": "train",
+      "characters": 40,
+      "sha256": "d15a765226253dd645a7dd28ff0a2af178bbc93762cae5d0745d94117043f71c"
+    },
+    {
+      "source_record_index": 9,
+      "split": "train",
+      "characters": 534,
+      "sha256": "ed4368db73690d72eba17ebb09b16a1f45b361079d04ffe1d89ea43416c57f5d"
+    },
+    {
+      "source_record_index": 10,
+      "split": "train",
+      "characters": 67,
+      "sha256": "b1dc16e265bd8e573319f38c1f4c126e08b73619b230034abef598306ceeb5a7"
+    },
+    {
+      "source_record_index": 11,
+      "split": "train",
+      "characters": 58,
+      "sha256": "fadb5d1078f53fea08ab201f4b6802b7123b9dac7c63396986bdaa927144226a"
+    },
+    {
+      "source_record_index": 12,
+      "split": "train",
+      "characters": 71,
+      "sha256": "0a953ce7260df30b6c38af18b97877ba1c9384616ce334121322dbbf5e26c7ae"
+    },
+    {
+      "source_record_index": 13,
+      "split": "train",
+      "characters": 119,
+      "sha256": "d932833dbd0f86c966e71c9e618bf2a8a7ee8911293845bc08b7e6a04fb70f6d"
+    },
+    {
+      "source_record_index": 14,
+      "split": "train",
+      "characters": 47,
+      "sha256": "ce28dbf88e4d43a96a2ef52fa95c6122e70e9a608ff8f45d2b7debc535a42227"
+    },
+    {
+      "source_record_index": 15,
+      "split": "train",
+      "characters": 260,
+      "sha256": "2a67574f127f3d71933b545c0882870d39c1194ea510497fdbf0783758247e45"
+    },
+    {
+      "source_record_index": 16,
+      "split": "train",
+      "characters": 116,
+      "sha256": "eea363ef5f99b291f634955fd6243a4301ccb48a75356bbb0d41640ea4fac3f8"
+    },
+    {
+      "source_record_index": 17,
+      "split": "train",
+      "characters": 221,
+      "sha256": "43b978ff42b3159056c0041c238d99f2de900320a2345fa91ea4c6bd48958957"
+    },
+    {
+      "source_record_index": 19,
+      "split": "train",
+      "characters": 36,
+      "sha256": "40b3138dc8893368d102568716a64e5fd0498c059490ccedfb4b0137d7e8ee97"
+    },
+    {
+      "source_record_index": 20,
+      "split": "train",
+      "characters": 79,
+      "sha256": "5ecc575e44e7be9bbc9a87eb09d4bc752ff04ad55092572c7c05ddb7201624cf"
+    },
+    {
+      "source_record_index": 21,
+      "split": "train",
+      "characters": 66,
+      "sha256": "2aab4a714bd31c4d79909def584055819aa40449bf85650b20b9a85b226e39e9"
+    },
+    {
+      "source_record_index": 22,
+      "split": "train",
+      "characters": 111,
+      "sha256": "f03d62237d68c4335f450cb6205effbbf9d724173adc997a5bd526bcb8e71f62"
+    },
+    {
+      "source_record_index": 23,
+      "split": "train",
+      "characters": 235,
+      "sha256": "a689d75dbfba07663087c10870982ff5dfe0f2293088ba86c2c843215a8da2a0"
+    },
+    {
+      "source_record_index": 24,
+      "split": "train",
+      "characters": 90,
+      "sha256": "a18b15759303f8f4e598fd8e195d3f52bb4e1edf00bd416fdf338f44a672b42e"
+    },
+    {
+      "source_record_index": 25,
+      "split": "train",
+      "characters": 53,
+      "sha256": "1e370a366d1ae08bc83d9758154d6ff0da737309acfc6e7a092fc7cd923d4362"
+    },
+    {
+      "source_record_index": 26,
+      "split": "train",
+      "characters": 628,
+      "sha256": "431160861a3d3099282c7e06a5495cf2b738c74aa783313eeb74913f0b81210c"
+    },
+    {
+      "source_record_index": 27,
+      "split": "train",
+      "characters": 392,
+      "sha256": "44df243eda368c423c206d23535dc5b9cbececb597fc48c119526e0946028093"
+    },
+    {
+      "source_record_index": 28,
+      "split": "train",
+      "characters": 224,
+      "sha256": "3a826fc71ec04e8c76054f890c07d4d4aef67412a47ae3280f27a8766e4fd0a9"
+    },
+    {
+      "source_record_index": 29,
+      "split": "train",
+      "characters": 131,
+      "sha256": "a4de7163c89c57bc3aa955185e7f6e5ecdb4fe71980aadb91b419ccbf268ef32"
+    },
+    {
+      "source_record_index": 30,
+      "split": "train",
+      "characters": 445,
+      "sha256": "adedbc3e945966d3db8aa61179b5a1131df0de48810cb42efaaa815476ddea14"
+    },
+    {
+      "source_record_index": 31,
+      "split": "train",
+      "characters": 53,
+      "sha256": "0f541eb03907ce38d5c7d9e4a19876f56ba74cb8359d6aec9f7cb88dc222dc4d"
+    },
+    {
+      "source_record_index": 32,
+      "split": "train",
+      "characters": 339,
+      "sha256": "a7bc690528794763765e12d4890543371d60cdc750c20c9141f1f238113cbd41"
+    },
+    {
+      "source_record_index": 33,
+      "split": "train",
+      "characters": 244,
+      "sha256": "2cd46311c8954439eb9dbfeeb172a10e3a80558c834f31881b70551dd48f22d2"
+    },
+    {
+      "source_record_index": 34,
+      "split": "train",
+      "characters": 72,
+      "sha256": "10266c80dc26939bf27cc8f6d86fbb7f2ab8a6292d6f781045e3335cf8e50040"
+    },
+    {
+      "source_record_index": 35,
+      "split": "train",
+      "characters": 90,
+      "sha256": "ec096bf0e728385a164259ac9019b251a81a1b426bd5cbc8e5d9168db859602c"
+    },
+    {
+      "source_record_index": 36,
+      "split": "train",
+      "characters": 26,
+      "sha256": "47c432698e627e0255115d0c5f545b0419633b2f12aa2cb56bc252f4735253b6"
+    },
+    {
+      "source_record_index": 37,
+      "split": "train",
+      "characters": 84,
+      "sha256": "afd8605c24f46d7673d6c1bb6ea05346a079056062a71bcc366422b697b23a65"
+    },
+    {
+      "source_record_index": 38,
+      "split": "train",
+      "characters": 126,
+      "sha256": "172a06df215c9cfe20ec2dccdc87d81f3847ccd7f7cfb1f10fbb688bff5c2eef"
+    },
+    {
+      "source_record_index": 39,
+      "split": "train",
+      "characters": 35,
+      "sha256": "92fe728071893abcabce3ee8c4870e008e02abe6bdb40bd2002554f2c2d71bf2"
+    },
+    {
+      "source_record_index": 40,
+      "split": "train",
+      "characters": 671,
+      "sha256": "14fccf9a0bf5ff8dc03cf5925acce05a0668b7767e46467592f87e85285caa8a"
+    },
+    {
+      "source_record_index": 41,
+      "split": "train",
+      "characters": 35,
+      "sha256": "43cdc5e35a53fd82accfa039347fc49926f8124a8c8b0cf93aa3bd9e9b1a59b2"
+    },
+    {
+      "source_record_index": 42,
+      "split": "train",
+      "characters": 197,
+      "sha256": "73ae9bf82f2219c4a66139d7ec65932ecbda0e46883976da78e9efd545f36b35"
+    },
+    {
+      "source_record_index": 43,
+      "split": "train",
+      "characters": 52,
+      "sha256": "d6cd2c3d1d7daf83c2ae6da99b691dfc2b336c6e3df80e70765d292f625a047b"
+    },
+    {
+      "source_record_index": 44,
+      "split": "train",
+      "characters": 357,
+      "sha256": "9401aeb560b014ef635154cd5d928fa523a4c8e2f3daae42cc623085cb9fb303"
+    },
+    {
+      "source_record_index": 45,
+      "split": "train",
+      "characters": 50,
+      "sha256": "b2b12a3f1c5085138a86445f5f03b927a369e47fb7a925834c247920846fca38"
+    },
+    {
+      "source_record_index": 46,
+      "split": "train",
+      "characters": 333,
+      "sha256": "8726357eddaeb82dca8a72fc05865bb68d13282735303a82bd83c0414a2a2ea1"
+    },
+    {
+      "source_record_index": 47,
+      "split": "train",
+      "characters": 127,
+      "sha256": "0f9062e7c5870eb6bd9e83c643f6368dd48226f32d6bc908bfa7266226604ece"
+    },
+    {
+      "source_record_index": 48,
+      "split": "train",
+      "characters": 43,
+      "sha256": "c3afc78a10708eb77ba9476d6e8ca3f9dcb7a28277be744362247da686316a79"
+    },
+    {
+      "source_record_index": 49,
+      "split": "train",
+      "characters": 1015,
+      "sha256": "0636da3efe4df476fb28ff873e081ccb0627d795faecd4d386d882429821dd18"
+    },
+    {
+      "source_record_index": 50,
+      "split": "validation",
+      "characters": 82,
+      "sha256": "6ec1394334d2085b839daaab3887e28cca95919646eac9e127e6feea72c03629"
+    },
+    {
+      "source_record_index": 51,
+      "split": "validation",
+      "characters": 489,
+      "sha256": "90cb8746030665ec6cb2a869db639f71b938014d0e198f9497268947cbfbb286"
+    },
+    {
+      "source_record_index": 52,
+      "split": "validation",
+      "characters": 175,
+      "sha256": "e62beda50e957d74ea4483f4e56dc8138b2ac1d530322c5a68d6b5fac7a93000"
+    },
+    {
+      "source_record_index": 53,
+      "split": "validation",
+      "characters": 505,
+      "sha256": "6e024039e97bb7dea26cc6c206037ec74cda44992e065330272e3e974d48d153"
+    },
+    {
+      "source_record_index": 54,
+      "split": "validation",
+      "characters": 31,
+      "sha256": "26774d4ac517aca3ceca2c431682714c5677d252f8f78f6d35a2e3801aa5d3ca"
+    },
+    {
+      "source_record_index": 55,
+      "split": "validation",
+      "characters": 303,
+      "sha256": "f98438156e90622df35530eaf510136427053037cc42664b5617b8f6587726e8"
+    },
+    {
+      "source_record_index": 56,
+      "split": "validation",
+      "characters": 26,
+      "sha256": "756ae4afdd496a45cfe34835e4d77e332f09b0e78fda2ff619477e23e7cd2e2c"
+    },
+    {
+      "source_record_index": 57,
+      "split": "validation",
+      "characters": 41,
+      "sha256": "331d371b40035df27a4192dfb66b0e43d17100444eb07fb51e41c12204419a7e"
+    },
+    {
+      "source_record_index": 58,
+      "split": "validation",
+      "characters": 33,
+      "sha256": "e294ec53e8487709e74d6551b73e4cbc6467d31e658ac7c44df6a7e05915df81"
+    },
+    {
+      "source_record_index": 59,
+      "split": "validation",
+      "characters": 33,
+      "sha256": "b7b92ea81d85a24fd3507a8af8e1c5e040ad23dff65c6e79fc718500d20ac992"
+    },
+    {
+      "source_record_index": 60,
+      "split": "validation",
+      "characters": 53,
+      "sha256": "8a0066d803e37f76329740de192c6e921900bc6e9c113d16305580f1efaaa5c8"
+    },
+    {
+      "source_record_index": 61,
+      "split": "validation",
+      "characters": 102,
+      "sha256": "2f6967791fdb475f4bef0b21494543b7f3f7456760d780096ec357bdbb1217a8"
+    },
+    {
+      "source_record_index": 62,
+      "split": "validation",
+      "characters": 88,
+      "sha256": "066e0c20bed00486ea474613aa70963e77e2e8fba49bd9c1cd53b99b78ba9383"
+    },
+    {
+      "source_record_index": 63,
+      "split": "validation",
+      "characters": 162,
+      "sha256": "66905bfb22ba23f9702dfe84444f6d387b36baf42acd0a20263fd97a6ae28e7c"
+    },
+    {
+      "source_record_index": 64,
+      "split": "validation",
+      "characters": 35,
+      "sha256": "eadd15d9ca4e44f2ba6896cb6d881f29f9b57805a5ec6e3bcbf2710065aff889"
+    },
+    {
+      "source_record_index": 65,
+      "split": "validation",
+      "characters": 152,
+      "sha256": "781e2753a4515c977aff33d4c0f485999939dc8c8f01eeb86f50bf229254bdc4"
+    }
+  ],
+  "references": [
+    {
+      "file": "char-rnn-Readme.md",
+      "url": "https://raw.githubusercontent.com/karpathy/char-rnn/6f9487a6fe5b420b7ca9afb0d7c078e37c1d1b4e/Readme.md",
+      "commit": "6f9487a6fe5b420b7ca9afb0d7c078e37c1d1b4e",
+      "sha256": "6540438971f884ae42315e517df7c9d0e1ca520daa120f0d0845b50944485ec4",
+      "bytes": 12795
+    },
+    {
+      "file": "makemore.py",
+      "url": "https://raw.githubusercontent.com/karpathy/makemore/988aa59e4d8fefa526d06f3b453ad116258398d4/makemore.py",
+      "commit": "988aa59e4d8fefa526d06f3b453ad116258398d4",
+      "sha256": "49b281f40d2c4897737cb90f21f55d4cbbe7d10329212caab72a9054ba17be96",
+      "bytes": 29659
+    },
+    {
+      "file": "makemore-LICENSE",
+      "url": "https://raw.githubusercontent.com/karpathy/makemore/988aa59e4d8fefa526d06f3b453ad116258398d4/LICENSE",
+      "commit": "988aa59e4d8fefa526d06f3b453ad116258398d4",
+      "sha256": "a59ec5cdb1c1e447e5266a014b3e7ded511f8d6e5a08931e931c87490ff821fe",
+      "bytes": 1072
+    }
+  ],
+  "implementation_origin": {
+    "script": "experiments/forward_mlp/forward_mlp.py",
+    "sha256": "183dbba82f8fb8943f31689a09fabb3fae7306e65510becb43be12a8e0511f20",
+    "method_reference": "makemore character MLP and autoregressive sampling; no external implementation code copied."
+  }
+}

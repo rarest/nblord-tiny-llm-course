@@ -1,0 +1,13 @@
+{
+  "schema": "nblord.depth-source-manifest.v1",
+  "source_commit_recorded_after_run": "6f94f0b09b27d569f6006b874409c2b69806d565",
+  "note": "Commit was made after execution; its training files match the executed files recorded by the experiment. Hashes for the two data/attention dependencies were added during independent review.",
+  "sha256": {
+    "experiments/transformer_depth/model.py": "1af0a6026d7b745de41ed6a2cc6d2c273bc28ddd109408b1509746f0df0fd016",
+    "experiments/transformer_depth/compare.py": "53d173b2b1415d4ad5f795d830296e6010a6aa5865812ddcad1899da66d54524",
+    "experiments/multihead_attention/model.py": "9c7ddf27b941c8d742f5d021848e45694fef188bc6ccde666c7fa096c0238f6b",
+    "experiments/minimal_transformer/model.py": "6997a16d2a186edbc2a5967f2f5850c9f62316f00a964e840e1f0802d85a4de8",
+    "experiments/causal_attention/attention.py": "41073207cca24c6cc41b41616ff750cb1e2b00d57dcae5033d394dc47f672ffd",
+    "experiments/short_text/text_mlp.py": "a50d4e97d3e63d8ab295f379917e8b52a30389b98ac7c22d39831fc51c7b35b4"
+  }
+}
