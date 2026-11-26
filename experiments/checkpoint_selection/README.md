@@ -24,13 +24,13 @@ python3 -m experiments.checkpoint_selection.readback
 
 ## 从初始化重跑
 
-前面的命令读回现成权重。如果想验证训练本身，先在当前 Git 仓库旁检出第 12 课的固定版本，再分别执行重放脚本。请使用尚不存在的输出目录。每次在 CPU 上约需几分钟。
+想亲眼看两条损失曲线怎样分开，可以用下载包里的代码和语料从头训练。在仓库根目录用 Python 3.10 或更新版本运行。下面两个命令各用一个新目录保存结果，每次在 CPU 上约需几分钟。
 
 ```sh
-git worktree add --detach ../lesson12-source 3467b442a2ba1d944a97742eec0d4c4e25226b80
-mkdir -p runs
-python3 -B experiments/checkpoint_selection/checkpoint_probe.py --source ../lesson12-source --output runs/checkpoint-replay
-python3 -B experiments/checkpoint_selection/limited_data_probe.py --source ../lesson12-source --output runs/limited-data-replay
+python3 -B experiments/checkpoint_selection/limited_data_probe.py --output run-32
+python3 -B experiments/checkpoint_selection/checkpoint_probe.py --output run-full
 ```
 
-若使用下载的源码压缩包，请在当前目录旁[克隆课程仓库](https://github.com/rarest/nblord-tiny-llm-course)，并将 `../lesson12-source` 切到上面这个提交。输出记录包含每步的损失和权重哈希，便于与随课记录比较。
+先看 `run-32/result.json` 的 `rows`。找出验证损失最低的那一步，再看训练损失此后怎么走。打开 `run-full/result.json`，在相同的第 500、1000、1500 步比较两次训练的验证损失。两次使用同样的初始化和验证题，第一条命令只反复练四个批次，第二条从全部 8,072 个窗口取批次。
+
+程序先按第 12 课固定版本核对模型源码、语料和批次顺序。已有该版本独立 Git 检出的读者仍可传 `--source <检出目录>`。再次运行时另取一个新输出目录。

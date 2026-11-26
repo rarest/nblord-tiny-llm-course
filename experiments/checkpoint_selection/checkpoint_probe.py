@@ -27,11 +27,37 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def training_source(source):
+    if source is not None:
+        source = source.resolve()
+        commit = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip()
+        if commit != SOURCE_COMMIT or subprocess.check_output(
+                ['git', '-C', str(source), 'status', '--porcelain', '--untracked-files=all'], text=True):
+            raise ValueError('Use the clean, pinned lesson-12 checkout')
+        return source, 'git-checkout'
+
+    source = Path(__file__).resolve().parents[2]
+    manifest_path = 'experiments/transformer_depth/training-source-manifest.json'
+    manifest = (source / manifest_path).read_bytes()
+    if sha(manifest) != '02d33844ce124ac1e1c8ddb6544566b02ad8ba4665e73c2e77929529b9e5353e':
+        raise ValueError(f'Training input changed: {manifest_path}')
+    # These files accompany the six training modules in the original manifest.
+    expected = {
+        **json.loads(manifest)['sha256'],
+        'experiments/transformer_depth/__init__.py': '2fbc398da2ffc3577d368341ad524472c6cb3e1b647a7d14369485de34f311cc',
+        'experiments/transformer_depth/results.json': '58106051f44153a2920ca95ba64de0eea22a08fed483fa0dad5a65a643791ea7',
+        'experiments/transformer_depth/schedule.json': '323c3312818d1a3b20eabf4f443d3325b32a6e437bc9f0187de4d259804891d1',
+        'experiments/short_text/data-manifest.json': 'a9f0ae9d2777e75757f9441bdcbeb2b3b48c1f8ecb288f287a42009fbcadfce5',
+        'experiments/short_text/corpus.txt': '859c47382109fd2394e5bf5ac544117e5de57830b8920f7b5ff0160b0edd9b71',
+    }
+    for relative, checksum in expected.items():
+        if sha((source / relative).read_bytes()) != checksum:
+            raise ValueError(f'Training input changed: {relative}')
+    return source, 'bundled-files'
+
+
 def run(source, output):
-    commit = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip()
-    if commit != SOURCE_COMMIT or subprocess.check_output(
-            ['git', '-C', str(source), 'status', '--porcelain', '--untracked-files=all'], text=True):
-        raise ValueError('Use the clean, pinned lesson-12 checkout')
+    source, verification = training_source(source)
     sys.path.insert(0, str(source))
     from experiments.causal_attention.attention import sequence_examples
     from experiments.multihead_attention import model as previous
@@ -97,7 +123,7 @@ def run(source, output):
     if last['weights_sha256'] != original_last_sha or not math.isclose(
             last['validation']['all_position_nll'], original_last, abs_tol=ABS_TOLERANCE, rel_tol=0):
         raise AssertionError('The final weights or validation metric differ from the lesson-12 run')
-    report = {'source_commit': commit, 'vocabulary': data['vocabulary'],
+    report = {'source_commit': SOURCE_COMMIT, 'source_verification': verification, 'vocabulary': data['vocabulary'],
               'config': {key: baseline[key] for key in ('batch_size', 'sequence_length', 'learning_rate', 'model_seed')},
               'initial_model_sha256': baseline['models']['2']['initial_model_sha256'],
               'corpus_sha256': data['corpus_sha256'], 'manifest_sha256': data['manifest_sha256'],
@@ -110,7 +136,7 @@ def run(source, output):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', required=True, type=Path)
+    parser.add_argument('--source', type=Path, help='optional clean checkout of the pinned lesson-12 commit')
     parser.add_argument('--output', required=True, type=Path)
     args = parser.parse_args()
-    run(args.source.resolve(), args.output.resolve())
+    run(args.source, args.output.resolve())

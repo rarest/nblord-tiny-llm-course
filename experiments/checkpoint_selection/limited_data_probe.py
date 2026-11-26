@@ -5,11 +5,10 @@ import argparse
 import json
 import math
 from pathlib import Path
-import subprocess
 import sys
 from tempfile import TemporaryDirectory
 
-from checkpoint_probe import PREFIX, SOURCE_COMMIT, encoded, sha
+from checkpoint_probe import PREFIX, SOURCE_COMMIT, encoded, sha, training_source
 
 
 CHECKPOINTS = (0, 20, 50, 100, 250, 500, 1000, 1500)
@@ -17,11 +16,7 @@ BATCH_COUNT = 4
 
 
 def run(source, output):
-    commit = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip()
-    if commit != SOURCE_COMMIT or subprocess.check_output(
-        ['git', '-C', str(source), 'status', '--porcelain', '--untracked-files=all'], text=True
-    ):
-        raise ValueError('Use the clean, pinned lesson-12 checkout')
+    source, verification = training_source(source)
     sys.path.insert(0, str(source))
     from experiments.causal_attention.attention import sequence_examples
     from experiments.multihead_attention import model as previous
@@ -83,7 +78,7 @@ def run(source, output):
             (output / filename).write_bytes(weight)
 
     result = {
-        'source_commit': commit,
+        'source_commit': SOURCE_COMMIT, 'source_verification': verification,
         'original_result_sha256': sha(original_raw),
         'config': config,
         'prefix': PREFIX,
@@ -103,7 +98,7 @@ def run(source, output):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', type=Path, required=True)
+    parser.add_argument('--source', type=Path, help='optional clean checkout of the pinned lesson-12 commit')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
-    run(args.source.resolve(), args.output.resolve())
+    run(args.source, args.output.resolve())
