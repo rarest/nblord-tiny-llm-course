@@ -17,6 +17,21 @@ class DepthTests(unittest.TestCase):
                                 check=True, capture_output=True, text=True)
         self.assertTrue(json.loads(result.stdout)['causal_check']['passed'])
 
+    def test_reader_summary_shows_the_observed_effect_at_each_position(self):
+        result = subprocess.run(
+            [sys.executable, '-m', 'experiments.transformer_depth.probe',
+             '--summary', '--position', '2', '--replace', 't'],
+            check=True, capture_output=True, text=True,
+        )
+        rows = [line.split('\t') for line in result.stdout.splitlines() if '\t' in line]
+        self.assertEqual(rows[0], ['位置', '原字符', '替换后', '第 1 层', '第 2 层', 'logits'])
+        self.assertEqual([int(row[0]) for row in rows[1:]], list(range(6)))
+        self.assertEqual(rows[3][1:3], ["'r'", "'t'"])
+        self.assertEqual(rows[6][1:3], ["' '", "' '"])
+        self.assertTrue(all(float(value) == 0 for row in rows[1:3] for value in row[3:]))
+        self.assertGreater(float(rows[3][-1]), 0)
+        self.assertGreater(float(rows[6][-1]), 0)
+
     def test_reader_probe_reports_actual_causal_comparison(self):
         self.assertTrue(callable(getattr(probe, 'inspect', None)))
         if not hasattr(probe, 'inspect'):
